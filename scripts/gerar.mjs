@@ -4,6 +4,7 @@
 
 import { mkdir, writeFile } from "node:fs/promises";
 import { TEMAS, SANS, MONO, esc, moldura, cabecalhoDeCartao } from "./tema.mjs";
+import { cartaoBaleia, cartaoNoc } from "./infra.mjs";
 
 const USUARIO = process.env.USUARIO || "guilhermevianacloud";
 const TOKEN = process.env.GH_STATS_TOKEN || process.env.GITHUB_TOKEN;
@@ -126,7 +127,7 @@ function cartaoCabecalho(t) {
     nos += `<circle cx="${cx}" cy="${y}" r="10" fill="${t.passou}" stroke="${t.passou}" stroke-width="2.5" class="no${i}"/>
 <text x="${cx}" y="${y + 32}" text-anchor="middle" class="mono" font-size="12" fill="${t.mudo}">${nome}</text>`;
   });
-  const frase = "> java · spring boot · javascript · react native";
+  const frase = "> microsoft 365 · intune · redes · java · spring boot";
   const conteudo = `
 <circle cx="26" cy="26" r="5.5" fill="#ff5f57"/><circle cx="44" cy="26" r="5.5" fill="#febc2e"/><circle cx="62" cy="26" r="5.5" fill="#28c840"/>
 <text x="84" y="30" class="mono" font-size="12" fill="${t.mudo}">pipeline: ${USUARIO} / main</text>
@@ -291,5 +292,7 @@ for (const [nome, t] of Object.entries(TEMAS)) {
   await writeFile(`cartoes/numeros-${nome}.svg`, cartaoNumeros(t, user, seq, altura));
   await writeFile(`cartoes/atividade-${nome}.svg`, cartaoAtividade(t, user));
   await writeFile(`cartoes/linkedin-${nome}.svg`, cartaoLinkedin(t));
+  await writeFile(`cartoes/baleia-${nome}.svg`, cartaoBaleia(t, nome));
+  await writeFile(`cartoes/infra-${nome}.svg`, cartaoNoc(t));
 }
 console.log(`Cartões gerados: ${ling.quantidade} linguagens, ${user.repositories.totalCount} repositórios, sequência ${seq.atual}/${seq.maior}.`);

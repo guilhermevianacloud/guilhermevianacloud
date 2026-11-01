@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="270" viewBox="0 0 900 270" role="img" aria-label="Infraestrutura: o que eu opero e estudo">
+<title>Infraestrutura: o que eu opero e estudo</title>
+<style>
+  .sans { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace; }
+  
+  .vivo { transform-box: fill-box; transform-origin: center; animation: vivo 2.2s ease-out infinite; }
+  @keyframes vivo { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.8); opacity: 0; } }
+  .liga { animation: liga .45s ease-out both; }
+  @keyframes liga { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+<clipPath id="dentro"><rect x="1" y="1" width="898" height="268" rx="13"/></clipPath>
+<rect x="0.5" y="0.5" width="899" height="269" rx="14" fill="#0b1020" stroke="#1e2943"/>
+<g clip-path="url(#dentro)">
+<circle cx="28" cy="28" r="4" fill="#3ddc97"/>
+<text x="40" y="32" class="mono" font-size="13" fill="#e6edf3" font-weight="600">infra</text>
+<text x="90" y="32" class="mono" font-size="12" fill="#8592b0">o que eu opero e o que estou estudando</text>
+<g class="mono" font-size="11"><circle cx="600" cy="28" r="4" fill="#3ddc97"/><text x="610" y="32" fill="#8592b0">no dia a dia</text><circle cx="700" cy="28" r="4" fill="#7aa2ff"/><text x="710" y="32" fill="#8592b0">estudando</text><circle cx="800" cy="28" r="4" fill="#f2a93b"/><text x="810" y="32" fill="#8592b0">em projeto</text></g>
+<g class="liga" style="animation-delay:0.15s">
+  <rect x="28" y="54" width="160" height="46" rx="9" fill="#18213a" stroke="#1e2943"/>
+  <circle cx="44" cy="71" r="4.5" fill="#3ddc97"/>
+  <circle cx="44" cy="71" r="4.5" fill="#3ddc97" class="vivo" style="animation-delay:0.00s"/>
+  <text x="56" y="75" class="sans" font-size="13" font-weight="600" fill="#e6edf3">Microsoft 365</text>
+  <text x="56" y="91" class="mono" font-size="10.5" fill="#3ddc97">no dia a dia</text>
+</g><g class="liga" style="animation-delay:0.27s">
+  <rect x="199" y="54" width="160" height="46" rx="9" fill="#18213a" stroke="#1e2943"/>
+  <circle cx="215" cy="71" r="4.5" fill="#3ddc97"/>
+  <circle cx="215" cy="71" r="4.5" fill="#3ddc97" class="vivo" style="animation-delay:0.21s"/>
+  <text x="227" y="75" class="sans" font-size="13" font-weight="600" fill="#e6edf3">Entra ID e AD</text>
+  <text x="227" y="91" class="mono" font-size="10.5" fill="#3ddc97">no dia a dia</text>
+</g><g class="liga" style="animation-delay:0.39s">
+  <rect x="370" y="54" width="160" height="46" rx="9" fill="#18213a" stroke="#1e2943"/>
+  <circle cx="386" cy="71" r="4.5" fill="#3ddc97"/>
+  <circle cx="386" cy="71" r="4.5" fill="#3ddc97" class="vivo" style="animation-delay:0.42s"/>
+  <text x="398" y="75" class="sans" font-size="13" font-weight="600" fill="#e6edf3">Intune</text>
+  <text x="398" y="91" class="mono" font-size="10.5" fill="#3ddc97">no dia a dia</text>
+</g><g class="liga" style="animation-delay:0.51s">
+  <rect x="541" y="54" width="160" height="46" rx="9" fill="#18213a" stroke="#1e2943"/>
+  <circle cx="557" cy="71" r="4.5" fill="#3ddc97"/>
+  <circle cx="557" cy="71" r="4.5" fill="#3ddc97" class="vivo" style="animation-delay:0.63s"/>
+  <text x="569" y="75" class="sans" font-size="13" font-weight="600" fill="#e6edf3">Teams e SharePoint</text>
+  <text x="569" y="91" class="mono" font-size="10.5" fill="#3ddc97">no dia a dia</text>
+</g><g class="liga" style="animation-delay:0.63s">
+  <rect x="712" y="54" width="160" height="46" rx="9" fill="#18213a" stroke="#1e2943"/>
+  <circle cx="728" cy="71" r="4.5" fill="#3ddc97"/>
+  <circle cx="728" cy="71" r="4.5" fill="#3ddc97" class="vivo" style="animation-delay:0.84s"/>
+  <text x="740" y="75" class="sans" font-size="13" font-weight="600" fill="#e6edf3">Redes e Wi-Fi</text>
+  <text x="740" y="91" class="mono" font-size="10.5" fill="#3ddc97">no dia a dia</text>
+</g><g class="liga" style="animation-delay:0.75s">
+  <rect x="28" y="111" width="160" height="46" rx="9" fill="#18213a" stroke="#1e2943"/>
+  <circle cx="44" cy="128" r="4.5" fill="#3ddc97"/>
+  <circle cx="44" cy="128" r="4.5" fill="#3ddc97" class="vivo" style="animation-delay:1.05s"/>
+  <text x="56" y="132" class="sans" font-size="13" font-weight="600" fill="#e6edf3">Monitoramento NOC</text>
+  <text x="56" y="148" class="mono" font-size="10.5" fill="#3ddc97">no dia a dia</text>
+</g><g class="liga" style="animation-delay:0.87s">
+  <rect x="199" y="111" width="160" height="46" rx="9" fill="#18213a" stroke="#1e2943"/>
+  <circle cx="215" cy="128" r="4.5" fill="#3ddc97"/>
+  <circle cx="215" cy="128" r="4.5" fill="#3ddc97" class="vivo" style="animation-delay:1.26s"/>
+  <text x="227" y="132" class="sans" font-size="13" font-weight="600" fill="#e6edf3">Audiovisual</text>
+  <text x="227" y="148" class="mono" font-size="10.5" fill="#3ddc97">no dia a dia</text>
+</g><g class="liga" style="animation-delay:0.99s">
+  <rect x="370" y="111" width="160" height="46" rx="9" fill="#18213a" stroke="#1e2943"/>
+  <circle cx="386" cy="128" r="4.5" fill="#7aa2ff"/>
+  <circle cx="386" cy="128" r="4.5" fill="#7aa2ff" class="vivo" style="animation-delay:1.47s"/>
+  <text x="398" y="132" class="sans" font-size="13" font-weight="600" fill="#e6edf3">Docker</text>
+  <text x="398" y="148" class="mono" font-size="10.5" fill="#7aa2ff">estudando</text>
+</g><g class="liga" style="animation-delay:1.11s">
+  <rect x="541" y="111" width="160" height="46" rx="9" fill="#18213a" stroke="#1e2943"/>
+  <circle cx="557" cy="128" r="4.5" fill="#7aa2ff"/>
+  <circle cx="557" cy="128" r="4.5" fill="#7aa2ff" class="vivo" style="animation-delay:1.68s"/>
+  <text x="569" y="132" class="sans" font-size="13" font-weight="600" fill="#e6edf3">Linux</text>
+  <text x="569" y="148" class="mono" font-size="10.5" fill="#7aa2ff">estudando</text>
+</g><g class="liga" style="animation-delay:1.23s">
+  <rect x="712" y="111" width="160" height="46" rx="9" fill="#18213a" stroke="#1e2943"/>
+  <circle cx="728" cy="128" r="4.5" fill="#f2a93b"/>
+  <circle cx="728" cy="128" r="4.5" fill="#f2a93b" class="vivo" style="animation-delay:1.89s"/>
+  <text x="740" y="132" class="sans" font-size="13" font-weight="600" fill="#e6edf3">CI/CD e SonarCloud</text>
+  <text x="740" y="148" class="mono" font-size="10.5" fill="#f2a93b">em projeto</text>
+</g>
+<text x="28" y="194" class="mono" font-size="12" fill="#8592b0">em andamento</text><g class="liga" style="animation-delay:1.50s"><text x="28" y="218" class="mono" font-size="12.5" fill="#e6edf3"><tspan fill="#3ddc97">▸ </tspan>manutenção preventiva de notebooks pelo Intune: conformidade e atualizações</text></g><g class="liga" style="animation-delay:1.80s"><text x="28" y="240" class="mono" font-size="12.5" fill="#e6edf3"><tspan fill="#3ddc97">▸ </tspan>rotina diária de monitoramento da rede no painel do NOC</text></g><g class="liga" style="animation-delay:2.10s"><text x="28" y="262" class="mono" font-size="12.5" fill="#e6edf3"><tspan fill="#3ddc97">▸ </tspan>pipeline de CI com testes e SonarCloud no projeto organizacao-recursos</text></g></g>
+</svg>

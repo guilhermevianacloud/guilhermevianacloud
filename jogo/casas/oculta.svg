@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
-<style>
-  .p { animation: brilho 2.6s ease-in-out infinite; }
-  @keyframes brilho { 50% { opacity: .45; } }
-  @media (prefers-reduced-motion: reduce) { .p { animation: none; } }
-</style>
-<rect x="1" y="1" width="54" height="54" rx="10" fill="#18213a" stroke="#2c3a5e" stroke-width="2"/>
-<text x="28" y="36" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="22" font-weight="700" fill="#7aa2ff" class="p">?</text>
-</svg>
