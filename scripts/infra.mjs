@@ -1,4 +1,4 @@
-// Cartões de infraestrutura: a cena da baleia carregando contêineres e o painel estilo NOC.
+// Cartões de infraestrutura: a cena da baleia carregando contêineres e o painel de infraestrutura.
 // Não usam a API; o conteúdo é fixo e mantido aqui.
 
 import { esc, moldura, cabecalhoDeCartao } from "./tema.mjs";
@@ -7,7 +7,7 @@ import { esc, moldura, cabecalhoDeCartao } from "./tema.mjs";
 const CONTEINERES = [
   ["m365", "entra id", "intune", "ad", "linux"],
   ["vlans", "dns", "dhcp", "wi-fi"],
-  ["firewall", "vpn", "noc"],
+  ["firewall", "vpn", "backup"],
   ["docker", "aws"],
 ];
 const CORES = ["#ef6c2c", "#3ddc97", "#7aa2ff", "#f2c14e", "#e5303f", "#a77bf3", "#22b8cf", "#ff8fab", "#8ce99a", "#5c7cfa"];
@@ -85,6 +85,8 @@ export function cartaoBaleia(t, nomeDoTema) {
     : `<g class="gira"><g stroke="#ffb627" stroke-width="3" stroke-linecap="round">${[0, 45, 90, 135, 180, 225, 270, 315].map((g) => `<line x1="560" y1="26" x2="560" y2="18" transform="rotate(${g} 560 58)"/>`).join("")}</g></g><circle cx="560" cy="58" r="22" fill="#ffcf4d"/>`;
   const pacotes = [0, 1, 2].map((k) => `<rect x="-4" y="-4" width="8" height="8" rx="2" fill="${t.passou}" class="pacote" style="animation-delay:${k * 0.9}s"/>`).join("");
   const peixe = (cor) => `<path d="M 0 0 Q 10 -7 20 0 Q 10 7 0 0 Z M 0 0 L -7 -5 L -7 5 Z" fill="${cor}"/>`;
+  // Rack: quatro servidores, cada um com dois LEDs piscando fora de sincronia.
+  const rack = [0, 1, 2, 3].map((k) => `<rect x="839" y="${215 + k * 9}" width="20" height="6" rx="1" fill="#2c3550"/><circle cx="854" cy="${218 + k * 9}" r="1.6" fill="${k % 2 ? "#3ddc97" : "#7ef0c1"}" class="led" style="animation-delay:${k * 0.27}s"/><circle cx="849" cy="${218 + k * 9}" r="1.3" fill="#f2c14e" class="led" style="animation-delay:${0.5 + k * 0.19}s"/>`).join("");
   const bolhas = [0, 1, 2, 3].map((k) => `<circle cx="${400 + k * 38}" cy="300" r="${2 + (k % 2)}" fill="#fff" fill-opacity=".5" class="bolha" style="animation-delay:${k * 1.1}s"/>`).join("");
 
   const estilo = `
@@ -118,6 +120,16 @@ export function cartaoBaleia(t, nomeDoTema) {
   @keyframes bolha { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-50px); opacity: 0; } }
   .fibra { opacity: 0; animation: fibra 3.6s linear infinite; }
   @keyframes fibra { 0% { transform: translateX(340px); opacity: 0; } 8%, 90% { opacity: 1; } 100% { transform: translateX(880px); opacity: 0; } }
+  .satelite { animation: orbita 12s ease-in-out infinite; }
+  @keyframes orbita { 50% { transform: translate(-10px, 4px) rotate(-6deg); } }
+  .link { animation: flui 1.2s linear infinite; }
+  @keyframes flui { to { stroke-dashoffset: -18; } }
+  .led { animation: led 1.1s step-end infinite; }
+  @keyframes led { 50% { opacity: .15; } }
+  .boia-ap { animation: balanca 3.4s ease-in-out infinite; }
+  @keyframes balanca { 50% { transform: translateY(4px) rotate(4deg); } }
+  .sinal { transform-box: fill-box; transform-origin: 50% 100%; opacity: 0; animation: sinal 2.4s ease-out infinite; }
+  @keyframes sinal { 0% { transform: scale(.4); opacity: 0; } 25% { opacity: .9; } 100% { transform: scale(1.3); opacity: 0; } }
   .depois { animation: aparece .5s ease-out 2.6s both; }
   @keyframes aparece { from { opacity: 0; } to { opacity: 1; } }`;
 
@@ -142,6 +154,23 @@ ${pacotes}
 <rect x="788" y="160" width="24" height="16" rx="3" fill="#ffd166"/>
 <path d="M 784 160 L 800 148 L 816 160 Z" fill="#e5303f"/>
 <text x="800" y="138" text-anchor="middle" class="mono" font-size="10" fill="${t.mudo}">monitoramento</text>
+<line x1="866" y1="64" x2="866" y2="190" stroke="${t.passou}" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="4 5" class="link"/>
+<text x="858" y="100" text-anchor="end" class="mono" font-size="10" fill="${t.mudo}">link wan</text>
+<g transform="translate(862 50)"><g class="satelite">
+  <rect x="-24" y="-5" width="16" height="10" rx="1" fill="#3d63dd" stroke="#9fb4ff" stroke-width=".8"/>
+  <rect x="8" y="-5" width="16" height="10" rx="1" fill="#3d63dd" stroke="#9fb4ff" stroke-width=".8"/>
+  <rect x="-8" y="-7" width="16" height="14" rx="3" fill="#d6daf0"/>
+  <path d="M 0 7 v 6" stroke="#d6daf0" stroke-width="1.5"/><circle cx="0" cy="14" r="2" fill="#f2c14e"/>
+</g></g>
+<rect x="835" y="210" width="28" height="42" rx="3" fill="#1b2236" stroke="#3b4f86"/>
+${rack}
+<text x="849" y="203" text-anchor="middle" class="mono" font-size="10" fill="${t.mudo}">servidores</text>
+<g transform="translate(644 244)"><g class="boia-ap">
+  <path d="M -9 6 Q 0 14 9 6 L 6 -6 H -6 Z" fill="#e5303f"/><rect x="-6" y="-2" width="12" height="4" fill="#fff"/>
+  <path d="M 0 -6 V -22" stroke="#d6daf0" stroke-width="2"/><circle cx="0" cy="-23" r="2.5" fill="#3ddc97"/>
+  ${[0, 1, 2].map((k) => `<path d="M -10 -28 Q 0 -38 10 -28" stroke="${t.passou}" stroke-width="2" fill="none" stroke-linecap="round" class="sinal" style="animation-delay:${k * 0.8}s"/>`).join("")}
+</g></g>
+<text x="644" y="206" text-anchor="middle" class="mono" font-size="10" fill="${t.mudo}">access point</text>
 <g transform="translate(320 168)"><g class="boia">${baleia()}</g></g>
 <path d="${onda(256, 6, 150, 1800, A)}" fill="${c.aguaFrente}" fill-opacity=".93" class="onda-frente"/>
 ${bolhas}
@@ -165,20 +194,18 @@ const SITUACOES = {
 
 const SERVICOS = [
   ["Microsoft 365", "trabalho"], ["Entra ID e AD", "trabalho"], ["Intune", "trabalho"],
-  ["Teams e SharePoint", "trabalho"], ["Redes e Wi-Fi", "trabalho"],
-  ["Monitoramento NOC", "trabalho"], ["Audiovisual", "trabalho"], ["Docker", "estudo"],
+  ["Redes e Wi-Fi", "trabalho"], ["Audiovisual", "trabalho"], ["Docker", "estudo"],
   ["Linux", "estudo"], ["CI/CD e SonarCloud", "projeto"],
 ];
 
 const EM_ANDAMENTO = [
   "manutenção preventiva de notebooks pelo Intune: conformidade e atualizações",
-  "rotina diária de monitoramento da rede no painel do NOC",
   "pipeline de CI com testes e SonarCloud no projeto organizacao-recursos",
 ];
 
-export function cartaoNoc(t) {
-  const L = 900, A = 270;
-  const colunas = 5, w = 160, h = 46, gap = 11, x0 = 28, y0 = 54;
+export function cartaoInfra(t) {
+  const L = 900, A = 248;
+  const colunas = 4, w = 202, h = 46, gap = 11, x0 = 28, y0 = 54;
   const estilo = `
   .vivo { transform-box: fill-box; transform-origin: center; animation: vivo 2.2s ease-out infinite; }
   @keyframes vivo { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.8); opacity: 0; } }

@@ -4,7 +4,7 @@
 
 import { mkdir, writeFile } from "node:fs/promises";
 import { TEMAS, SANS, MONO, esc, moldura, cabecalhoDeCartao } from "./tema.mjs";
-import { cartaoBaleia, cartaoNoc } from "./infra.mjs";
+import { cartaoBaleia, cartaoInfra } from "./infra.mjs";
 
 const USUARIO = process.env.USUARIO || "guilhermevianacloud";
 const TOKEN = process.env.GH_STATS_TOKEN || process.env.GITHUB_TOKEN;
@@ -293,6 +293,6 @@ for (const [nome, t] of Object.entries(TEMAS)) {
   await writeFile(`cartoes/atividade-${nome}.svg`, cartaoAtividade(t, user));
   await writeFile(`cartoes/linkedin-${nome}.svg`, cartaoLinkedin(t));
   await writeFile(`cartoes/baleia-${nome}.svg`, cartaoBaleia(t, nome));
-  await writeFile(`cartoes/infra-${nome}.svg`, cartaoNoc(t));
+  await writeFile(`cartoes/infra-${nome}.svg`, cartaoInfra(t));
 }
 console.log(`Cartões gerados: ${ling.quantidade} linguagens, ${user.repositories.totalCount} repositórios, sequência ${seq.atual}/${seq.maior}.`);
