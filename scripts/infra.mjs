@@ -3,12 +3,16 @@
 
 import { esc, moldura, cabecalhoDeCartao } from "./tema.mjs";
 
+// Pilha de contêineres, da fila de baixo para a de cima.
 const CONTEINERES = [
-  ["m365", "entra id", "intune", "ad"],
-  ["vlans", "wi-fi", "noc"],
-  ["docker", "linux"],
+  ["m365", "entra id", "intune", "ad", "linux"],
+  ["vlans", "dns", "dhcp", "wi-fi"],
+  ["firewall", "vpn", "noc"],
+  ["docker", "aws"],
 ];
-const CORES = ["#ef6c2c", "#3ddc97", "#7aa2ff", "#f2c14e", "#e5303f", "#a77bf3", "#22b8cf", "#ff8fab", "#8ce99a"];
+const CORES = ["#ef6c2c", "#3ddc97", "#7aa2ff", "#f2c14e", "#e5303f", "#a77bf3", "#22b8cf", "#ff8fab", "#8ce99a", "#5c7cfa"];
+const COR_FIXA = { aws: "#ff9900" };
+const SERVICOS_AWS = "ec2 · s3 · vpc · iam";
 
 const CENARIO = {
   escuro: {
@@ -38,15 +42,15 @@ function baleia() {
   let caixas = "", i = 0;
   CONTEINERES.forEach((fila, f) => {
     fila.forEach((rotulo, c) => {
-      const x = 24 + f * 25 + c * 50;
+      const x = 16 + f * 21 + c * 42;
       const y = -32 - f * 32;
-      const cor = CORES[i % CORES.length];
+      const cor = COR_FIXA[rotulo] || CORES[i % CORES.length];
       let ripas = "";
-      for (let k = 1; k < 6; k++) ripas += `<line x1="${x + k * 8}" y1="${y + 4}" x2="${x + k * 8}" y2="${y + 26}" stroke="#fff" stroke-opacity=".22"/>`;
+      for (let k = 1; k < 5; k++) ripas += `<line x1="${x + k * 8}" y1="${y + 4}" x2="${x + k * 8}" y2="${y + 26}" stroke="#fff" stroke-opacity=".22"/>`;
       caixas += `<g class="cai" style="animation-delay:${(0.3 + i * 0.22).toFixed(2)}s">
-  <rect x="${x}" y="${y}" width="46" height="30" rx="3" fill="${cor}"/>${ripas}
-  <rect x="${x + 4}" y="${y + 9}" width="38" height="13" rx="2" fill="#000" fill-opacity=".28"/>
-  <text x="${x + 23}" y="${y + 19}" text-anchor="middle" class="mono" font-size="8.5" font-weight="700" fill="#fff">${esc(rotulo)}</text>
+  <rect x="${x}" y="${y}" width="40" height="30" rx="3" fill="${cor}"/>${ripas}
+  <rect x="${x + 2}" y="${y + 9}" width="36" height="13" rx="2" fill="#000" fill-opacity=".3"/>
+  <text x="${x + 20}" y="${y + 18.5}" text-anchor="middle" class="mono" font-size="7.6" font-weight="700" fill="#fff">${esc(rotulo)}</text>
 </g>`;
       i++;
     });
@@ -91,7 +95,7 @@ export function cartaoBaleia(t, nomeDoTema) {
   .nuvem { animation: nuvem 9s ease-in-out infinite; }
   @keyframes nuvem { 50% { transform: translateX(18px); } }
   .pacote { opacity: 0; animation: pacote 2.7s linear infinite; }
-  @keyframes pacote { 0% { transform: translate(190px, 62px); opacity: 0; } 10%, 85% { opacity: 1; } 100% { transform: translate(392px, 96px); opacity: 0; } }
+  @keyframes pacote { 0% { transform: translate(196px, 60px); opacity: 0; } 10%, 85% { opacity: 1; } 100% { transform: translate(392px, 52px); opacity: 0; } }
   .onda-fundo { animation: corre 16s linear infinite; }
   .onda-frente { animation: volta 10s linear infinite; }
   @keyframes corre { from { transform: translateX(0); } to { transform: translateX(-900px); } }
@@ -112,6 +116,8 @@ export function cartaoBaleia(t, nomeDoTema) {
   @keyframes nada { from { transform: translate(940px, 292px); } to { transform: translate(-60px, 292px); } }
   .bolha { opacity: 0; animation: bolha 4.4s ease-in infinite; }
   @keyframes bolha { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-50px); opacity: 0; } }
+  .fibra { opacity: 0; animation: fibra 3.6s linear infinite; }
+  @keyframes fibra { 0% { transform: translateX(340px); opacity: 0; } 8%, 90% { opacity: 1; } 100% { transform: translateX(880px); opacity: 0; } }
   .depois { animation: aparece .5s ease-out 2.6s both; }
   @keyframes aparece { from { opacity: 0; } to { opacity: 1; } }`;
 
@@ -122,10 +128,11 @@ ${estrelas}
 ${astro}
 <g class="nuvem">
   <path d="M 112 76 Q 96 76 96 62 Q 96 46 114 48 Q 118 28 142 30 Q 162 22 174 42 Q 196 40 196 60 Q 196 76 178 76 Z" fill="${escuro ? "#2a3a66" : "#ffffff"}" stroke="${escuro ? "#3b4f86" : "#cfe0f5"}"/>
-  <text x="146" y="64" text-anchor="middle" class="mono" font-size="11" fill="${escuro ? "#cfd8ff" : "#3d63dd"}">cloud</text>
+  <text x="146" y="64" text-anchor="middle" class="mono" font-size="11" font-weight="700" fill="#ff9900">aws</text>
+  <text x="146" y="94" text-anchor="middle" class="mono" font-size="10" fill="${t.mudo}">${SERVICOS_AWS}</text>
 </g>
-<line x1="190" y1="62" x2="392" y2="96" stroke="${t.passou}" stroke-opacity=".45" stroke-dasharray="3 6"/>
-<text x="268" y="68" class="mono" font-size="11" fill="${t.mudo}" transform="rotate(9.5 268 68)">sync</text>
+<line x1="196" y1="60" x2="392" y2="52" stroke="${t.passou}" stroke-opacity=".45" stroke-dasharray="3 6"/>
+<text x="282" y="48" class="mono" font-size="11" fill="${t.mudo}">sync</text>
 ${pacotes}
 <path d="${onda(238, 7, 180, 1800, A)}" fill="${c.aguaFundo}" class="onda-fundo"/>
 <g class="facho"><path d="M 800 168 L 600 146 L 600 190 Z" fill="url(#luz-${nomeDoTema})"/></g>
@@ -138,11 +145,14 @@ ${pacotes}
 <g transform="translate(320 168)"><g class="boia">${baleia()}</g></g>
 <path d="${onda(256, 6, 150, 1800, A)}" fill="${c.aguaFrente}" fill-opacity=".93" class="onda-frente"/>
 ${bolhas}
+<line x1="336" y1="303" x2="888" y2="303" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-dasharray="10 5"/>
+${[0, 1, 2, 3].map((k) => `<circle cx="0" cy="303" r="3" fill="#7ef0c1" class="fibra" style="animation-delay:${k * 0.9}s"/>`).join("")}
+<text x="886" y="316" text-anchor="end" class="mono" font-size="10" fill="#fff" fill-opacity=".8">fibra · tcp/ip · switches</text>
 <g class="peixe">${peixe("#f2c14e")}</g>
 <g class="mono" font-size="12">
   <rect x="20" y="276" width="300" height="30" rx="8" fill="#0b1020" fill-opacity=".78"/>
   <text x="34" y="295" fill="#e6edf3">$ docker compose up -d</text>
-  <text x="208" y="295" fill="#3ddc97" class="depois">✔ 9 no ar</text>
+  <text x="208" y="295" fill="#3ddc97" class="depois">✔ ${CONTEINERES.flat().length} no ar</text>
 </g>`;
   return moldura(t, L, A, "Baleia carregando contêineres de infraestrutura", conteudo, estilo);
 }
