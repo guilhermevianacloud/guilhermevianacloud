@@ -2,7 +2,8 @@
 // Uso: GITHUB_TOKEN=... node scripts/gerar.mjs
 // Saída: pasta "cartoes/", um arquivo por cartão e por tema (escuro/claro).
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { TEMAS, SANS, MONO, esc, moldura, cabecalhoDeCartao } from "./tema.mjs";
 import { cartaoBaleia, cartaoInfra } from "./infra.mjs";
 
@@ -295,4 +296,15 @@ for (const [nome, t] of Object.entries(TEMAS)) {
   await writeFile(`cartoes/baleia-${nome}.svg`, cartaoBaleia(t, nome));
   await writeFile(`cartoes/infra-${nome}.svg`, cartaoInfra(t));
 }
+
+// O GitHub e o navegador guardam as imagens em cache pelo endereço. Pôr no endereço uma
+// "versão" tirada do conteúdo faz a imagem nova aparecer assim que ela muda.
+const readme = await readFile("README.md", "utf8");
+const versoes = new Map();
+for (const [, nome] of readme.matchAll(/cartoes\/([a-z0-9-]+)\.svg/g)) {
+  const conteudo = await readFile(`cartoes/${nome}.svg`);
+  versoes.set(nome, createHash("sha256").update(conteudo).digest("hex").slice(0, 8));
+}
+await writeFile("README.md", readme.replace(/cartoes\/([a-z0-9-]+)\.svg(\?v=[0-9a-f]+)?/g, (_, nome) => `cartoes/${nome}.svg?v=${versoes.get(nome)}`));
+
 console.log(`Cartões gerados: ${ling.quantidade} linguagens, ${user.repositories.totalCount} repositórios, sequência ${seq.atual}/${seq.maior}.`);

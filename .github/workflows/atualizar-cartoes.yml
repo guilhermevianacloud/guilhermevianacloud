@@ -29,7 +29,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cartoes
+          git add cartoes README.md
           git diff --cached --quiet && exit 0
           git commit -m "chore: atualiza cartões do perfil"
           # Uma jogada do Caça ao Bug pode ter chegado antes; os arquivos não se cruzam, então o rebase é limpo.

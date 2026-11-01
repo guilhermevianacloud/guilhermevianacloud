@@ -1,13 +1,13 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/cabecalho-escuro.svg">
-  <img src="cartoes/cabecalho-claro.svg" alt="Guilherme Viana — Análise e Desenvolvimento de Sistemas no Senac, Assistente de Tecnologia | Infraestrutura" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/cabecalho-escuro.svg?v=313b4133">
+  <img src="cartoes/cabecalho-claro.svg?v=3c90f9c1" alt="Guilherme Viana — Análise e Desenvolvimento de Sistemas no Senac, Assistente de Tecnologia | Infraestrutura" width="100%">
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/baleia-escuro.svg">
-  <img src="cartoes/baleia-claro.svg" alt="Uma baleia nada no mar carregando contêineres de infraestrutura (m365, entra id, intune, ad, linux, vlans, dns, dhcp, wi-fi, firewall, vpn, backup, docker, aws), uma nuvem da AWS sincronizando dados, um satélite com link WAN, um mini data center com dois racks de servidores, um access point numa boia, um cabo de fibra no fundo do mar e um farol de monitoramento" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/baleia-escuro.svg?v=5be7df4f">
+  <img src="cartoes/baleia-claro.svg?v=5e39bce7" alt="Uma baleia nada no mar carregando contêineres de infraestrutura (m365, entra id, intune, ad, linux, vlans, dns, dhcp, wi-fi, firewall, vpn, backup, docker, aws), uma nuvem da AWS sincronizando dados, um satélite com link WAN, um mini data center com dois racks de servidores, um access point numa boia, um cabo de fibra no fundo do mar e um farol de monitoramento" width="100%">
 </picture>
 
 </div>
@@ -25,22 +25,22 @@ public class GuilhermeViana {
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/infra-escuro.svg">
-  <img src="cartoes/infra-claro.svg" alt="Painel de infraestrutura: o que uso no dia a dia, o que estou estudando e o que está em andamento" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/infra-escuro.svg?v=268b6ec6">
+  <img src="cartoes/infra-claro.svg?v=1bb648ef" alt="Painel de infraestrutura: o que uso no dia a dia, o que estou estudando e o que está em andamento" width="100%">
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/linguagens-escuro.svg">
-  <img src="cartoes/linguagens-claro.svg" alt="Linguagens usadas nos meus repositórios, por bytes de código" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/linguagens-escuro.svg?v=8328d8a4">
+  <img src="cartoes/linguagens-claro.svg?v=157255e0" alt="Linguagens usadas nos meus repositórios, por bytes de código" width="49%">
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg">
-  <img src="cartoes/numeros-claro.svg" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=6dc20049">
+  <img src="cartoes/numeros-claro.svg?v=ab5eeb22" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/atividade-escuro.svg">
-  <img src="cartoes/atividade-claro.svg" alt="Contribuições por semana nos últimos 12 meses" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/atividade-escuro.svg?v=595dc088">
+  <img src="cartoes/atividade-claro.svg?v=c0fb4480" alt="Contribuições por semana nos últimos 12 meses" width="100%">
 </picture>
 
 </div>
@@ -59,8 +59,8 @@ public class GuilhermeViana {
 
 <a href="https://www.linkedin.com/in/guilherme-viana-lopes-a061922b1/">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="cartoes/linkedin-escuro.svg">
-    <img src="cartoes/linkedin-claro.svg" alt="Conectar no LinkedIn" height="44">
+    <source media="(prefers-color-scheme: dark)" srcset="cartoes/linkedin-escuro.svg?v=6ea5f3bf">
+    <img src="cartoes/linkedin-claro.svg?v=35f5cdb1" alt="Conectar no LinkedIn" height="44">
   </picture>
 </a>
 
