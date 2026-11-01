@@ -4,8 +4,8 @@
 
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { TEMAS, SANS, MONO, esc, moldura, cabecalhoDeCartao } from "./tema.mjs";
-import { cartaoBaleia, cartaoInfra } from "./infra.mjs";
+import { TEMAS, esc, moldura, cabecalhoDeCartao } from "./tema.mjs";
+import { cartaoPrincipal } from "./infra.mjs";
 
 const USUARIO = process.env.USUARIO || "guilhermevianacloud";
 const TOKEN = process.env.GH_STATS_TOKEN || process.env.GITHUB_TOKEN;
@@ -103,53 +103,6 @@ function tamanho(bytes) {
 
 // ---------- cartões ----------
 
-function cartaoCabecalho(t) {
-  const L = 900, A = 250;
-  const etapas = ["estudar", "codar", "testar", "revisar", "entregar"];
-  const x0 = 80, x1 = 820, y = 196;
-  const passo = (x1 - x0) / (etapas.length - 1);
-  const ciclo = 9; // segundos
-  let estilo = `
-  .digita { transform: translateX(560px); animation: digita 3.2s steps(46) 0.4s both; }
-  @keyframes digita { from { transform: translateX(0); } to { transform: translateX(560px); } }
-  .cursor { animation: pisca 1s step-end infinite; }
-  @keyframes pisca { 50% { opacity: 0; } }
-  .linha-viva { stroke-dasharray: ${x1 - x0}; animation: corre ${ciclo}s ease-in-out infinite; }
-  @keyframes corre { 0% { stroke-dashoffset: ${x1 - x0}; } 70%, 92% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 0; opacity: 0; } }
-  .pulso { transform-box: fill-box; transform-origin: center; animation: pulso 2.4s ease-out infinite; }
-  @keyframes pulso { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2.6); opacity: 0; } }`;
-  let nos = "";
-  etapas.forEach((nome, i) => {
-    const cx = x0 + i * passo;
-    const acende = Math.round((i / (etapas.length - 1)) * 70);
-    estilo += `
-  .no${i} { animation: acende${i} ${ciclo}s ease-in-out infinite; }
-  @keyframes acende${i} { 0%, ${Math.max(acende - 1, 0)}% { fill: ${t.fundo}; } ${acende + 2}%, 96% { fill: ${t.passou}; } 100% { fill: ${t.fundo}; } }`;
-    nos += `<circle cx="${cx}" cy="${y}" r="10" fill="${t.passou}" stroke="${t.passou}" stroke-width="2.5" class="no${i}"/>
-<text x="${cx}" y="${y + 32}" text-anchor="middle" class="mono" font-size="12" fill="${t.mudo}">${nome}</text>`;
-  });
-  const frase = "> microsoft 365 · intune · redes · java · spring boot";
-  const conteudo = `
-<circle cx="26" cy="26" r="5.5" fill="#ff5f57"/><circle cx="44" cy="26" r="5.5" fill="#febc2e"/><circle cx="62" cy="26" r="5.5" fill="#28c840"/>
-<text x="84" y="30" class="mono" font-size="12" fill="${t.mudo}">pipeline: ${USUARIO} / main</text>
-<g transform="translate(${L - 150} 14)">
-  <rect width="124" height="24" rx="12" fill="none" stroke="${t.passou}"/>
-  <circle cx="16" cy="12" r="4" fill="${t.passou}"/>
-  <circle cx="16" cy="12" r="4" fill="${t.passou}" class="pulso"/>
-  <text x="28" y="16.5" class="mono" font-size="12" fill="${t.passou}">em construção</text>
-</g>
-<text x="40" y="94" class="sans" font-size="40" font-weight="700" fill="${t.texto}">Guilherme Viana</text>
-<text x="42" y="124" class="sans" font-size="16" fill="${t.mudo}">Análise e Desenvolvimento de Sistemas · Senac  ·  Assistente de Tecnologia | Infraestrutura</text>
-<g>
-  <text x="42" y="156" class="mono" font-size="15" fill="${t.destaque}">${esc(frase)}</text>
-  <rect x="38" y="140" width="560" height="22" fill="${t.fundo}" class="digita"/>
-</g>
-<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="${t.trilha}" stroke-width="4" stroke-linecap="round"/>
-<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="${t.passou}" stroke-width="4" stroke-linecap="round" class="linha-viva"/>
-${nos}`;
-  return moldura(t, L, A, "Guilherme Viana — pipeline do perfil", conteudo, estilo);
-}
-
 function cartaoLinguagens(t, ling, altura) {
   const L = 440;
   const xBarra = 24, largBarra = L - 48;
@@ -226,44 +179,6 @@ ${linhas}
   return moldura(t, L, altura, "Números do perfil no GitHub", conteudo, estilo);
 }
 
-function cartaoAtividade(t, user) {
-  const L = 900, A = 190;
-  const semanas = user.contributionsCollection.contributionCalendar.weeks;
-  const totais = semanas.map((s) => ({
-    inicio: s.contributionDays[0].date,
-    n: s.contributionDays.reduce((t, d) => t + d.contributionCount, 0),
-  }));
-  const max = Math.max(1, ...totais.map((s) => s.n));
-  const base = 150, altMax = 82, x0 = 28;
-  const passo = (L - 56) / totais.length;
-  const w = Math.max(passo - 4, 3);
-  const estilo = `
-  .barra { transform-box: fill-box; transform-origin: bottom; animation: sobe .7s cubic-bezier(.2,.8,.2,1) both; }
-  @keyframes sobe { from { transform: scaleY(0); } to { transform: scaleY(1); } }`;
-  let barras = "", meses = "", mesAnterior = -1;
-  const nomes = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
-  totais.forEach((s, i) => {
-    const x = x0 + i * passo;
-    const h = s.n === 0 ? 3 : Math.max((s.n / max) * altMax, 6);
-    const cor = s.n === 0 ? t.vazio : t.passou;
-    const opac = s.n === 0 ? 1 : (0.45 + 0.55 * (s.n / max)).toFixed(2);
-    barras += `<rect x="${x.toFixed(2)}" y="${(base - h).toFixed(2)}" width="${w.toFixed(2)}" height="${h.toFixed(2)}" rx="2" fill="${cor}" fill-opacity="${opac}" class="barra" style="animation-delay:${(i * 0.025).toFixed(3)}s"><title>semana de ${s.inicio}: ${s.n}</title></rect>`;
-    const mes = Number(s.inicio.slice(5, 7)) - 1;
-    if (mes !== mesAnterior) {
-      if (i > 0) meses += `<text x="${x.toFixed(2)}" y="${base + 22}" class="mono" font-size="11" fill="${t.mudo}">${nomes[mes]}</text>`;
-      mesAnterior = mes;
-    }
-  });
-  const total = user.contributionsCollection.contributionCalendar.totalContributions;
-  const conteudo = `
-${cabecalhoDeCartao(t, 28, "histórico", "contribuições por semana · últimos 12 meses")}
-<text x="${L - 28}" y="32" text-anchor="end" class="mono" font-size="12" fill="${t.mudo}">pico: ${num(max)}/semana · total: ${num(total)}</text>
-<line x1="${x0}" y1="${base + 0.5}" x2="${L - 28}" y2="${base + 0.5}" stroke="${t.borda}"/>
-${barras}
-${meses}`;
-  return moldura(t, L, A, "Contribuições por semana nos últimos 12 meses", conteudo, estilo);
-}
-
 function cartaoLinkedin(t) {
   const L = 300, A = 44;
   const estilo = `
@@ -288,13 +203,10 @@ const altura = Math.max(100 + ling.lista.length * 28, 72 + 7 * 28 + 30) + 10;
 
 await mkdir("cartoes", { recursive: true });
 for (const [nome, t] of Object.entries(TEMAS)) {
-  await writeFile(`cartoes/cabecalho-${nome}.svg`, cartaoCabecalho(t));
   await writeFile(`cartoes/linguagens-${nome}.svg`, cartaoLinguagens(t, ling, altura));
   await writeFile(`cartoes/numeros-${nome}.svg`, cartaoNumeros(t, user, seq, altura));
-  await writeFile(`cartoes/atividade-${nome}.svg`, cartaoAtividade(t, user));
   await writeFile(`cartoes/linkedin-${nome}.svg`, cartaoLinkedin(t));
-  await writeFile(`cartoes/baleia-${nome}.svg`, cartaoBaleia(t, nome));
-  await writeFile(`cartoes/infra-${nome}.svg`, cartaoInfra(t));
+  await writeFile(`cartoes/principal-${nome}.svg`, cartaoPrincipal(t, nome));
 }
 
 // O GitHub e o navegador guardam as imagens em cache pelo endereço. Pôr no endereço uma
