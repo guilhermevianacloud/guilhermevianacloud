@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="cartoes/cabecalho-escuro.svg">
-  <img src="cartoes/cabecalho-claro.svg" alt="Guilherme Viana — Análise e Desenvolvimento de Sistemas no Senac, suporte de TI e qualidade de software" width="100%">
+  <img src="cartoes/cabecalho-claro.svg" alt="Guilherme Viana — Análise e Desenvolvimento de Sistemas no Senac, Assistente de Tecnologia | Infraestrutura" width="100%">
 </picture>
 
 </div>
