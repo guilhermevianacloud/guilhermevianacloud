@@ -30,17 +30,17 @@ public class GuilhermeViana {
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/linguagens-escuro.svg?v=d0f3f0b7">
-  <img src="cartoes/linguagens-claro.svg?v=a430a272" alt="Linguagens usadas nos meus repositórios, por bytes de código" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/linguagens-escuro.svg?v=170aa8f6">
+  <img src="cartoes/linguagens-claro.svg?v=0749c70e" alt="Linguagens usadas nos meus repositórios, por bytes de código" width="49%">
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=415d281f">
-  <img src="cartoes/numeros-claro.svg?v=0c3d4145" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=709469ee">
+  <img src="cartoes/numeros-claro.svg?v=1e4a4131" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/atividade-escuro.svg?v=602ce421">
-  <img src="cartoes/atividade-claro.svg?v=488c3926" alt="Contribuições por semana nos últimos 12 meses" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/atividade-escuro.svg?v=51b24401">
+  <img src="cartoes/atividade-claro.svg?v=5a9ebf61" alt="Contribuições por semana nos últimos 12 meses" width="100%">
 </picture>
 
 </div>
