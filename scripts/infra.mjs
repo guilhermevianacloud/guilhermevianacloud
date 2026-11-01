@@ -85,8 +85,19 @@ export function cartaoBaleia(t, nomeDoTema) {
     : `<g class="gira"><g stroke="#ffb627" stroke-width="3" stroke-linecap="round">${[0, 45, 90, 135, 180, 225, 270, 315].map((g) => `<line x1="560" y1="26" x2="560" y2="18" transform="rotate(${g} 560 58)"/>`).join("")}</g></g><circle cx="560" cy="58" r="22" fill="#ffcf4d"/>`;
   const pacotes = [0, 1, 2].map((k) => `<rect x="-4" y="-4" width="8" height="8" rx="2" fill="${t.passou}" class="pacote" style="animation-delay:${k * 0.9}s"/>`).join("");
   const peixe = (cor) => `<path d="M 0 0 Q 10 -7 20 0 Q 10 7 0 0 Z M 0 0 L -7 -5 L -7 5 Z" fill="${cor}"/>`;
-  // Rack: quatro servidores, cada um com dois LEDs piscando fora de sincronia.
-  const rack = [0, 1, 2, 3].map((k) => `<rect x="839" y="${215 + k * 9}" width="20" height="6" rx="1" fill="#2c3550"/><circle cx="854" cy="${218 + k * 9}" r="1.6" fill="${k % 2 ? "#3ddc97" : "#7ef0c1"}" class="led" style="animation-delay:${k * 0.27}s"/><circle cx="849" cy="${218 + k * 9}" r="1.3" fill="#f2c14e" class="led" style="animation-delay:${0.5 + k * 0.19}s"/>`).join("");
+  // Mini data center: dois racks com oito servidores cada; LEDs e barras de atividade em ritmos diferentes.
+  let racks = "";
+  [782, 838].forEach((x, r) => {
+    racks += `<rect x="${x}" y="150" width="50" height="104" rx="4" fill="#161c2e" stroke="#3b4f86" stroke-width="1.5"/>
+<rect x="${x}" y="150" width="50" height="7" rx="3" fill="#2c3a5e"/>`;
+    for (let u = 0; u < 8; u++) {
+      const y = 160 + u * 11.5, n = r * 8 + u;
+      racks += `<rect x="${x + 5}" y="${y}" width="40" height="9" rx="1.5" fill="#26304a"/>
+<rect x="${x + 9}" y="${y + 3}" width="18" height="3" rx="1.5" fill="#3ddc97" fill-opacity=".85" class="atividade" style="animation-duration:${(0.9 + (n * 7 % 10) / 8).toFixed(2)}s;animation-delay:${(n * 0.13).toFixed(2)}s"/>
+<circle cx="${x + 35}" cy="${y + 4.5}" r="1.7" fill="${n % 3 ? "#7ef0c1" : "#3ddc97"}" class="led" style="animation-delay:${(n * 0.17).toFixed(2)}s"/>
+<circle cx="${x + 40}" cy="${y + 4.5}" r="1.7" fill="${n % 4 ? "#7aa2ff" : "#f2c14e"}" class="led" style="animation-delay:${(0.4 + n * 0.23).toFixed(2)}s"/>`;
+    }
+  });
   const bolhas = [0, 1, 2, 3].map((k) => `<circle cx="${400 + k * 38}" cy="300" r="${2 + (k % 2)}" fill="#fff" fill-opacity=".5" class="bolha" style="animation-delay:${k * 1.1}s"/>`).join("");
 
   const estilo = `
@@ -112,7 +123,7 @@ export function cartaoBaleia(t, nomeDoTema) {
   @keyframes jato { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: .9; } 100% { transform: translateY(-34px); opacity: 0; } }
   .cai { animation: cai .7s cubic-bezier(.3,1.35,.5,1) both; }
   @keyframes cai { from { transform: translateY(-240px); opacity: 0; } 50% { opacity: 1; } to { transform: none; } }
-  .facho { transform-box: view-box; transform-origin: 800px 168px; animation: facho 5s ease-in-out infinite; }
+  .facho { transform-box: view-box; transform-origin: 736px 168px; animation: facho 5s ease-in-out infinite; }
   @keyframes facho { 50% { transform: scaleX(-1); } }
   .peixe { transform: translate(640px, 292px); animation: nada 22s linear infinite; }
   @keyframes nada { from { transform: translate(940px, 292px); } to { transform: translate(-60px, 292px); } }
@@ -125,11 +136,17 @@ export function cartaoBaleia(t, nomeDoTema) {
   .link { animation: flui 1.2s linear infinite; }
   @keyframes flui { to { stroke-dashoffset: -18; } }
   .led { animation: led 1.1s step-end infinite; }
+  .atividade { transform-box: fill-box; transform-origin: left; animation: atividade 1.3s ease-in-out infinite alternate; }
+  @keyframes atividade { from { transform: scaleX(.2); } to { transform: scaleX(1); } }
+  .aura { animation: aura 3s ease-in-out infinite; }
+  @keyframes aura { 50% { opacity: .35; } }
   @keyframes led { 50% { opacity: .15; } }
   .boia-ap { animation: balanca 3.4s ease-in-out infinite; }
   @keyframes balanca { 50% { transform: translateY(4px) rotate(4deg); } }
   .sinal { transform-box: fill-box; transform-origin: 50% 100%; opacity: 0; animation: sinal 2.4s ease-out infinite; }
   @keyframes sinal { 0% { transform: scale(.4); opacity: 0; } 25% { opacity: .9; } 100% { transform: scale(1.3); opacity: 0; } }
+  .vivo { transform-box: fill-box; transform-origin: center; animation: vivo 2.2s ease-out infinite; }
+  @keyframes vivo { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.8); opacity: 0; } }
   .depois { animation: aparece .5s ease-out 2.6s both; }
   @keyframes aparece { from { opacity: 0; } to { opacity: 1; } }`;
 
@@ -147,24 +164,32 @@ ${astro}
 <text x="282" y="48" class="mono" font-size="11" fill="${t.mudo}">sync</text>
 ${pacotes}
 <path d="${onda(238, 7, 180, 1800, A)}" fill="${c.aguaFundo}" class="onda-fundo"/>
-<g class="facho"><path d="M 800 168 L 600 146 L 600 190 Z" fill="url(#luz-${nomeDoTema})"/></g>
-<path d="M 690 264 Q 790 222 890 264 Z" fill="${c.ilha}"/>
-<path d="M 786 248 L 790 176 L 810 176 L 814 248 Z" fill="#f4f4f4"/>
-<path d="M 788 222 H 812 L 813 234 H 787 Z M 789 196 H 811 L 811.5 208 H 788.5 Z" fill="#e5303f"/>
-<rect x="788" y="160" width="24" height="16" rx="3" fill="#ffd166"/>
-<path d="M 784 160 L 800 148 L 816 160 Z" fill="#e5303f"/>
-<text x="800" y="138" text-anchor="middle" class="mono" font-size="10" fill="${t.mudo}">monitoramento</text>
-<line x1="866" y1="64" x2="866" y2="190" stroke="${t.passou}" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="4 5" class="link"/>
-<text x="858" y="100" text-anchor="end" class="mono" font-size="10" fill="${t.mudo}">link wan</text>
+<g class="facho"><path d="M 736 168 L 596 150 L 596 186 Z" fill="url(#luz-${nomeDoTema})"/></g>
+<path d="M 676 266 Q 800 210 912 266 Z" fill="${c.ilha}"/>
+<g transform="translate(-64 0)">
+  <path d="M 786 248 L 790 176 L 810 176 L 814 248 Z" fill="#f4f4f4"/>
+  <path d="M 788 222 H 812 L 813 234 H 787 Z M 789 196 H 811 L 811.5 208 H 788.5 Z" fill="#e5303f"/>
+  <rect x="788" y="160" width="24" height="16" rx="3" fill="#ffd166"/>
+  <path d="M 784 160 L 800 148 L 816 160 Z" fill="#e5303f"/>
+</g>
+<text x="736" y="138" text-anchor="middle" class="mono" font-size="10" fill="${t.mudo}">monitoramento</text>
+<line x1="866" y1="64" x2="866" y2="104" stroke="${t.passou}" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="4 5" class="link"/>
+<text x="858" y="86" text-anchor="end" class="mono" font-size="10" fill="${t.mudo}">link wan</text>
 <g transform="translate(862 50)"><g class="satelite">
   <rect x="-24" y="-5" width="16" height="10" rx="1" fill="#3d63dd" stroke="#9fb4ff" stroke-width=".8"/>
   <rect x="8" y="-5" width="16" height="10" rx="1" fill="#3d63dd" stroke="#9fb4ff" stroke-width=".8"/>
   <rect x="-8" y="-7" width="16" height="14" rx="3" fill="#d6daf0"/>
   <path d="M 0 7 v 6" stroke="#d6daf0" stroke-width="1.5"/><circle cx="0" cy="14" r="2" fill="#f2c14e"/>
 </g></g>
-<rect x="835" y="210" width="28" height="42" rx="3" fill="#1b2236" stroke="#3b4f86"/>
-${rack}
-<text x="849" y="203" text-anchor="middle" class="mono" font-size="10" fill="${t.mudo}">servidores</text>
+<line x1="835" y1="128" x2="835" y2="144" stroke="${t.passou}" stroke-opacity=".6" stroke-width="1.5"/>
+<rect x="774" y="144" width="122" height="116" rx="10" fill="${t.passou}" fill-opacity=".14" class="aura"/>
+${racks}
+<g class="mono">
+  <rect x="762" y="106" width="134" height="22" rx="11" fill="#0b1020" fill-opacity=".85" stroke="${t.passou}" stroke-opacity=".7"/>
+  <circle cx="776" cy="117" r="3.5" fill="#3ddc97"/><circle cx="776" cy="117" r="3.5" fill="#3ddc97" class="vivo"/>
+  <text x="786" y="121" font-size="11" font-weight="700" fill="#e6edf3">servidores</text>
+  <text x="888" y="121" text-anchor="end" font-size="10" fill="#3ddc97">on-line</text>
+</g>
 <g transform="translate(644 244)"><g class="boia-ap">
   <path d="M -9 6 Q 0 14 9 6 L 6 -6 H -6 Z" fill="#e5303f"/><rect x="-6" y="-2" width="12" height="4" fill="#fff"/>
   <path d="M 0 -6 V -22" stroke="#d6daf0" stroke-width="2"/><circle cx="0" cy="-23" r="2.5" fill="#3ddc97"/>

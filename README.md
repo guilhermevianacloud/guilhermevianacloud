@@ -7,7 +7,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="cartoes/baleia-escuro.svg">
-  <img src="cartoes/baleia-claro.svg" alt="Uma baleia nada no mar carregando contêineres de infraestrutura (m365, entra id, intune, ad, linux, vlans, dns, dhcp, wi-fi, firewall, vpn, backup, docker, aws), uma nuvem da AWS sincronizando dados, um satélite com link WAN, um rack de servidores, um access point numa boia, um cabo de fibra no fundo do mar e um farol de monitoramento" width="100%">
+  <img src="cartoes/baleia-claro.svg" alt="Uma baleia nada no mar carregando contêineres de infraestrutura (m365, entra id, intune, ad, linux, vlans, dns, dhcp, wi-fi, firewall, vpn, backup, docker, aws), uma nuvem da AWS sincronizando dados, um satélite com link WAN, um mini data center com dois racks de servidores, um access point numa boia, um cabo de fibra no fundo do mar e um farol de monitoramento" width="100%">
 </picture>
 
 </div>
