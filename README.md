@@ -6,12 +6,12 @@
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/linguagens-escuro.svg?v=259086ca">
-  <img src="cartoes/linguagens-claro.svg?v=f1ca5918" alt="Linguagens usadas nos meus repositórios, por bytes de código" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/linguagens-escuro.svg?v=d0f3f0b7">
+  <img src="cartoes/linguagens-claro.svg?v=a430a272" alt="Linguagens usadas nos meus repositórios, por bytes de código" width="49%">
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=021a752f">
-  <img src="cartoes/numeros-claro.svg?v=63e760cf" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=415d281f">
+  <img src="cartoes/numeros-claro.svg?v=0c3d4145" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
 </picture>
 
 **Infraestrutura** · Microsoft 365 · Entra ID · Active Directory · Intune · Redes e Wi-Fi · Linux · Docker<br>
