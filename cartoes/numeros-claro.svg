@@ -23,12 +23,12 @@
   <text x="24" y="100" class="mono" font-size="13" fill="#12a36b">✓</text>
   <text x="44" y="100" class="mono" font-size="13" fill="#1b2333">contribuições em 12 meses</text>
   <line x1="249.5" y1="96" x2="395.6" y2="96" stroke="#d9dfea" stroke-width="1.5" stroke-dasharray="1.5 4"/>
-  <text x="416" y="100" text-anchor="end" class="mono" font-size="13" font-weight="700" fill="#1b2333">64</text>
+  <text x="416" y="100" text-anchor="end" class="mono" font-size="13" font-weight="700" fill="#1b2333">65</text>
 </g><g class="passo" style="animation-delay:0.96s">
   <text x="24" y="128" class="mono" font-size="13" fill="#12a36b">✓</text>
   <text x="44" y="128" class="mono" font-size="13" fill="#1b2333">commits em 12 meses</text>
   <line x1="202.1" y1="124" x2="395.6" y2="124" stroke="#d9dfea" stroke-width="1.5" stroke-dasharray="1.5 4"/>
-  <text x="416" y="128" text-anchor="end" class="mono" font-size="13" font-weight="700" fill="#1b2333">52</text>
+  <text x="416" y="128" text-anchor="end" class="mono" font-size="13" font-weight="700" fill="#1b2333">53</text>
 </g><g class="passo" style="animation-delay:1.24s">
   <text x="24" y="156" class="mono" font-size="13" fill="#12a36b">✓</text>
   <text x="44" y="156" class="mono" font-size="13" fill="#1b2333">pull requests (total)</text>
