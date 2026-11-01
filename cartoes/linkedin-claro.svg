@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="44" viewBox="0 0 300 44" role="img" aria-label="Conectar no LinkedIn">
+<title>Conectar no LinkedIn</title>
+<style>
+  .sans { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace; }
+  
+  .seta { animation: empurra 1.8s ease-in-out infinite; }
+  @keyframes empurra { 50% { transform: translateX(4px); } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+<clipPath id="dentro"><rect x="1" y="1" width="298" height="42" rx="13"/></clipPath>
+<rect x="0.5" y="0.5" width="299" height="43" rx="14" fill="#ffffff" stroke="#d9dfea"/>
+<g clip-path="url(#dentro)">
+<rect x="10" y="10" width="24" height="24" rx="5" fill="#0a66c2"/>
+<text x="22" y="28" text-anchor="middle" class="sans" font-size="14" font-weight="700" fill="#fff">in</text>
+<text x="44" y="27" class="mono" font-size="13" fill="#1b2333">conectar no LinkedIn</text>
+<text x="278" y="27" text-anchor="end" class="mono seta" font-size="14" fill="#12a36b">→</text></g>
+</svg>

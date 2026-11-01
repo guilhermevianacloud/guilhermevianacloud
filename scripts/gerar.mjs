@@ -3,6 +3,7 @@
 // Saída: pasta "cartoes/", um arquivo por cartão e por tema (escuro/claro).
 
 import { mkdir, writeFile } from "node:fs/promises";
+import { TEMAS, SANS, MONO, esc, moldura, cabecalhoDeCartao } from "./tema.mjs";
 
 const USUARIO = process.env.USUARIO || "guilhermevianacloud";
 const TOKEN = process.env.GH_STATS_TOKEN || process.env.GITHUB_TOKEN;
@@ -15,20 +16,6 @@ if (!TOKEN) {
   console.error("Defina GITHUB_TOKEN (ou GH_STATS_TOKEN).");
   process.exit(1);
 }
-
-const TEMAS = {
-  escuro: {
-    fundo: "#0b1020", borda: "#1e2943", trilha: "#18213a", texto: "#e6edf3",
-    mudo: "#8592b0", passou: "#3ddc97", destaque: "#7aa2ff", vazio: "#1c2640",
-  },
-  claro: {
-    fundo: "#ffffff", borda: "#d9dfea", trilha: "#eef1f7", texto: "#1b2333",
-    mudo: "#5b6782", passou: "#12a36b", destaque: "#3d63dd", vazio: "#e6eaf2",
-  },
-};
-
-const SANS = "'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif";
-const MONO = "ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace";
 
 // ---------- dados ----------
 
@@ -105,37 +92,11 @@ function sequencias(dias) {
 
 // ---------- utilidades ----------
 
-const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const num = (n) => n.toLocaleString("pt-BR");
 function tamanho(bytes) {
   if (bytes >= 1024 * 1024) return `${(bytes / 1024 / 1024).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} MB`;
   if (bytes >= 1024) return `${Math.round(bytes / 1024).toLocaleString("pt-BR")} KB`;
   return `${bytes} B`;
-}
-
-// Quem pediu menos movimento no sistema vê o estado final, sem animação.
-const SEM_MOVIMENTO = "@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }";
-
-function moldura(t, largura, altura, titulo, conteudo, estilo = "") {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${largura}" height="${altura}" viewBox="0 0 ${largura} ${altura}" role="img" aria-label="${esc(titulo)}">
-<title>${esc(titulo)}</title>
-<style>
-  .sans { font-family: ${SANS}; }
-  .mono { font-family: ${MONO}; }
-  ${estilo}
-  ${SEM_MOVIMENTO}
-</style>
-<clipPath id="dentro"><rect x="1" y="1" width="${largura - 2}" height="${altura - 2}" rx="13"/></clipPath>
-<rect x="0.5" y="0.5" width="${largura - 1}" height="${altura - 1}" rx="14" fill="${t.fundo}" stroke="${t.borda}"/>
-<g clip-path="url(#dentro)">${conteudo}</g>
-</svg>
-`;
-}
-
-function cabecalhoDeCartao(t, x, rotulo, detalhe) {
-  return `<circle cx="${x}" cy="28" r="4" fill="${t.passou}"/>
-<text x="${x + 12}" y="32" class="mono" font-size="13" fill="${t.texto}" font-weight="600">${esc(rotulo)}</text>
-<text x="${x + 12 + rotulo.length * 8 + 10}" y="32" class="mono" font-size="12" fill="${t.mudo}">${esc(detalhe)}</text>`;
 }
 
 // ---------- cartões ----------
@@ -176,7 +137,7 @@ function cartaoCabecalho(t) {
   <text x="28" y="16.5" class="mono" font-size="12" fill="${t.passou}">em construção</text>
 </g>
 <text x="40" y="94" class="sans" font-size="40" font-weight="700" fill="${t.texto}">Guilherme Viana</text>
-<text x="42" y="124" class="sans" font-size="16" fill="${t.mudo}">Análise e Desenvolvimento de Sistemas · Senac  ·  suporte de TI  ·  qualidade de software</text>
+<text x="42" y="124" class="sans" font-size="16" fill="${t.mudo}">Análise e Desenvolvimento de Sistemas · Senac  ·  Assistente de Tecnologia | Infraestrutura</text>
 <g>
   <text x="42" y="156" class="mono" font-size="15" fill="${t.destaque}">${esc(frase)}</text>
   <rect x="38" y="140" width="560" height="22" fill="${t.fundo}" class="digita"/>
@@ -301,6 +262,19 @@ ${meses}`;
   return moldura(t, L, A, "Contribuições por semana nos últimos 12 meses", conteudo, estilo);
 }
 
+function cartaoLinkedin(t) {
+  const L = 300, A = 44;
+  const estilo = `
+  .seta { animation: empurra 1.8s ease-in-out infinite; }
+  @keyframes empurra { 50% { transform: translateX(4px); } }`;
+  const conteudo = `
+<rect x="10" y="10" width="24" height="24" rx="5" fill="#0a66c2"/>
+<text x="22" y="28" text-anchor="middle" class="sans" font-size="14" font-weight="700" fill="#fff">in</text>
+<text x="44" y="27" class="mono" font-size="13" fill="${t.texto}">conectar no LinkedIn</text>
+<text x="${L - 22}" y="27" text-anchor="end" class="mono seta" font-size="14" fill="${t.passou}">→</text>`;
+  return moldura(t, L, A, "Conectar no LinkedIn", conteudo, estilo);
+}
+
 // ---------- execução ----------
 
 const user = await consultar();
@@ -316,5 +290,6 @@ for (const [nome, t] of Object.entries(TEMAS)) {
   await writeFile(`cartoes/linguagens-${nome}.svg`, cartaoLinguagens(t, ling, altura));
   await writeFile(`cartoes/numeros-${nome}.svg`, cartaoNumeros(t, user, seq, altura));
   await writeFile(`cartoes/atividade-${nome}.svg`, cartaoAtividade(t, user));
+  await writeFile(`cartoes/linkedin-${nome}.svg`, cartaoLinkedin(t));
 }
 console.log(`Cartões gerados: ${ling.quantidade} linguagens, ${user.repositories.totalCount} repositórios, sequência ${seq.atual}/${seq.maior}.`);

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="178" viewBox="0 0 900 178" role="img" aria-label="Caça ao Bug: placar e regras">
+<title>Caça ao Bug: placar e regras</title>
+<style>
+  .sans { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace; }
+  
+  .anda { transform: translateX(820px); animation: anda 16s linear infinite; }
+  @keyframes anda { from { transform: translateX(-30px); } to { transform: translateX(930px); } }
+  .pernas { animation: passo .25s steps(2) infinite; }
+  @keyframes passo { 50% { transform: scaleX(-1); } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+<clipPath id="dentro"><rect x="1" y="1" width="898" height="176" rx="13"/></clipPath>
+<rect x="0.5" y="0.5" width="899" height="177" rx="14" fill="#ffffff" stroke="#d9dfea"/>
+<g clip-path="url(#dentro)">
+<circle cx="28" cy="28" r="4" fill="#12a36b"/>
+<text x="40" y="32" class="mono" font-size="13" fill="#1b2333" font-weight="600">caça ao bug</text>
+<text x="138" y="32" class="mono" font-size="12" fill="#5b6782">rodada 1 · 0 tentativas · 0 jogadas no total</text>
+<text x="28" y="72" class="sans" font-size="15" fill="#1b2333">Um bug se escondeu no tabuleiro abaixo. Clique numa casa para investigar.</text>
+<rect x="28" y="98" width="14" height="14" rx="4" fill="#3b6fd8"/>
+<text x="50" y="110" class="mono" font-size="12" fill="#1b2333">frio</text>
+<text x="50" y="126" class="mono" font-size="11" fill="#5b6782">4 ou mais</text>
+<rect x="168" y="98" width="14" height="14" rx="4" fill="#d9a21b"/>
+<text x="190" y="110" class="mono" font-size="12" fill="#1b2333">morno</text>
+<text x="190" y="126" class="mono" font-size="11" fill="#5b6782">3 casas</text>
+<rect x="308" y="98" width="14" height="14" rx="4" fill="#ef6c2c"/>
+<text x="330" y="110" class="mono" font-size="12" fill="#1b2333">quente</text>
+<text x="330" y="126" class="mono" font-size="11" fill="#5b6782">2 casas</text>
+<rect x="448" y="98" width="14" height="14" rx="4" fill="#e5303f"/>
+<text x="470" y="110" class="mono" font-size="12" fill="#1b2333">queimando</text>
+<text x="470" y="126" class="mono" font-size="11" fill="#5b6782">1 casa</text>
+<text x="28" y="150" class="mono" font-size="12" fill="#5b6782">primeira rodada em andamento</text>
+<line x1="610" y1="56" x2="610" y2="132" stroke="#d9dfea"/>
+<text x="640" y="72" class="mono" font-size="12" fill="#5b6782">placar de caçadores</text><text x="640" y="98" class="sans" font-size="14" fill="#1b2333">ninguém achou ainda.</text>
+<text x="640" y="118" class="sans" font-size="14" fill="#12a36b">o primeiro lugar está livre.</text>
+<g transform="translate(0 166)"><g class="anda"><g stroke="#e5303f" stroke-width="1.6" stroke-linecap="round">
+    <path d="M-4 -6 l-3 -5 M2 -6 l2 -5 M-4 6 l-3 5 M2 6 l2 5 M-1 -6 v-6 M-1 6 v6" class="pernas"/>
+    <path d="M12 -2 l5 -5 M12 2 l5 5"/>
+  </g>
+  <ellipse cx="0" cy="0" rx="10" ry="7" fill="#e5303f"/>
+  <circle cx="11" cy="0" r="4.5" fill="#e5303f"/>
+  <path d="M-9 0 H8" stroke="#000" stroke-opacity=".25" stroke-width="1.2"/></g></g></g>
+</svg>
