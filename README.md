@@ -6,8 +6,8 @@
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/baleia-escuro.svg?v=5be7df4f">
-  <img src="cartoes/baleia-claro.svg?v=5e39bce7" alt="Uma baleia nada no mar carregando contêineres de infraestrutura (m365, entra id, intune, ad, linux, vlans, dns, dhcp, wi-fi, firewall, vpn, backup, docker, aws), uma nuvem da AWS sincronizando dados, um satélite com link WAN, um mini data center com dois racks de servidores, um access point numa boia, um cabo de fibra no fundo do mar e um farol de monitoramento" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/baleia-escuro.svg?v=ed5495d8">
+  <img src="cartoes/baleia-claro.svg?v=2a2f4e60" alt="Uma baleia nada no mar carregando contêineres de infraestrutura (m365, entra id, intune, ad, linux, vlans, dns, dhcp, wi-fi, firewall, vpn, backup, docker, aws), uma nuvem da AWS sincronizando dados, um satélite com link WAN, um mini data center com dois racks de servidores, um access point numa boia, um cabo de fibra no fundo do mar e um farol de monitoramento" width="100%">
 </picture>
 
 </div>
@@ -30,17 +30,17 @@ public class GuilhermeViana {
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/linguagens-escuro.svg?v=259086ca">
-  <img src="cartoes/linguagens-claro.svg?v=f1ca5918" alt="Linguagens usadas nos meus repositórios, por bytes de código" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/linguagens-escuro.svg?v=d0f3f0b7">
+  <img src="cartoes/linguagens-claro.svg?v=a430a272" alt="Linguagens usadas nos meus repositórios, por bytes de código" width="49%">
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=021a752f">
-  <img src="cartoes/numeros-claro.svg?v=63e760cf" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=415d281f">
+  <img src="cartoes/numeros-claro.svg?v=0c3d4145" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/atividade-escuro.svg?v=780960e9">
-  <img src="cartoes/atividade-claro.svg?v=863cfe77" alt="Contribuições por semana nos últimos 12 meses" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/atividade-escuro.svg?v=602ce421">
+  <img src="cartoes/atividade-claro.svg?v=488c3926" alt="Contribuições por semana nos últimos 12 meses" width="100%">
 </picture>
 
 </div>

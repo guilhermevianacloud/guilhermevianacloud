@@ -85,17 +85,14 @@ export function cartaoBaleia(t, nomeDoTema) {
     : `<g class="gira"><g stroke="#ffb627" stroke-width="3" stroke-linecap="round">${[0, 45, 90, 135, 180, 225, 270, 315].map((g) => `<line x1="560" y1="26" x2="560" y2="18" transform="rotate(${g} 560 58)"/>`).join("")}</g></g><circle cx="560" cy="58" r="22" fill="#ffcf4d"/>`;
   const pacotes = [0, 1, 2].map((k) => `<rect x="-4" y="-4" width="8" height="8" rx="2" fill="${t.passou}" class="pacote" style="animation-delay:${k * 0.9}s"/>`).join("");
   const peixe = (cor) => `<path d="M 0 0 Q 10 -7 20 0 Q 10 7 0 0 Z M 0 0 L -7 -5 L -7 5 Z" fill="${cor}"/>`;
-  // Mini data center: dois racks com oito servidores cada; LEDs e barras de atividade em ritmos diferentes.
+  // Dois racks simples: seis servidores cada, com uma luz verde piscando devagar.
   let racks = "";
-  [782, 838].forEach((x, r) => {
-    racks += `<rect x="${x}" y="150" width="50" height="104" rx="4" fill="#161c2e" stroke="#3b4f86" stroke-width="1.5"/>
-<rect x="${x}" y="150" width="50" height="7" rx="3" fill="#2c3a5e"/>`;
-    for (let u = 0; u < 8; u++) {
-      const y = 160 + u * 11.5, n = r * 8 + u;
-      racks += `<rect x="${x + 5}" y="${y}" width="40" height="9" rx="1.5" fill="#26304a"/>
-<rect x="${x + 9}" y="${y + 3}" width="18" height="3" rx="1.5" fill="#3ddc97" fill-opacity=".85" class="atividade" style="animation-duration:${(0.9 + (n * 7 % 10) / 8).toFixed(2)}s;animation-delay:${(n * 0.13).toFixed(2)}s"/>
-<circle cx="${x + 35}" cy="${y + 4.5}" r="1.7" fill="${n % 3 ? "#7ef0c1" : "#3ddc97"}" class="led" style="animation-delay:${(n * 0.17).toFixed(2)}s"/>
-<circle cx="${x + 40}" cy="${y + 4.5}" r="1.7" fill="${n % 4 ? "#7aa2ff" : "#f2c14e"}" class="led" style="animation-delay:${(0.4 + n * 0.23).toFixed(2)}s"/>`;
+  [786, 840].forEach((x, r) => {
+    racks += `<rect x="${x}" y="152" width="46" height="100" rx="5" fill="#161c2e" stroke="#2c3a5e" stroke-width="1.5"/>`;
+    for (let u = 0; u < 6; u++) {
+      const y = 162 + u * 14.5, n = r * 6 + u;
+      racks += `<rect x="${x + 6}" y="${y}" width="34" height="9" rx="2" fill="#232c44"/>
+<circle cx="${x + 34}" cy="${y + 4.5}" r="1.8" fill="#3ddc97" class="led" style="animation-delay:${(n * 0.37).toFixed(2)}s"/>`;
     }
   });
   const bolhas = [0, 1, 2, 3].map((k) => `<circle cx="${400 + k * 38}" cy="300" r="${2 + (k % 2)}" fill="#fff" fill-opacity=".5" class="bolha" style="animation-delay:${k * 1.1}s"/>`).join("");
@@ -135,12 +132,8 @@ export function cartaoBaleia(t, nomeDoTema) {
   @keyframes orbita { 50% { transform: translate(-10px, 4px) rotate(-6deg); } }
   .link { animation: flui 1.2s linear infinite; }
   @keyframes flui { to { stroke-dashoffset: -18; } }
-  .led { animation: led 1.1s step-end infinite; }
-  .atividade { transform-box: fill-box; transform-origin: left; animation: atividade 1.3s ease-in-out infinite alternate; }
-  @keyframes atividade { from { transform: scaleX(.2); } to { transform: scaleX(1); } }
-  .aura { animation: aura 3s ease-in-out infinite; }
-  @keyframes aura { 50% { opacity: .35; } }
-  @keyframes led { 50% { opacity: .15; } }
+  .led { animation: led 2.4s ease-in-out infinite; }
+  @keyframes led { 50% { opacity: .3; } }
   .boia-ap { animation: balanca 3.4s ease-in-out infinite; }
   @keyframes balanca { 50% { transform: translateY(4px) rotate(4deg); } }
   .sinal { transform-box: fill-box; transform-origin: 50% 100%; opacity: 0; animation: sinal 2.4s ease-out infinite; }
@@ -173,7 +166,7 @@ ${pacotes}
   <path d="M 784 160 L 800 148 L 816 160 Z" fill="#e5303f"/>
 </g>
 <text x="736" y="138" text-anchor="middle" class="mono" font-size="10" fill="${t.mudo}">monitoramento</text>
-<line x1="866" y1="64" x2="866" y2="104" stroke="${t.passou}" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="4 5" class="link"/>
+<line x1="866" y1="64" x2="866" y2="124" stroke="${t.passou}" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="4 5" class="link"/>
 <text x="858" y="86" text-anchor="end" class="mono" font-size="10" fill="${t.mudo}">link wan</text>
 <g transform="translate(862 50)"><g class="satelite">
   <rect x="-24" y="-5" width="16" height="10" rx="1" fill="#3d63dd" stroke="#9fb4ff" stroke-width=".8"/>
@@ -181,15 +174,9 @@ ${pacotes}
   <rect x="-8" y="-7" width="16" height="14" rx="3" fill="#d6daf0"/>
   <path d="M 0 7 v 6" stroke="#d6daf0" stroke-width="1.5"/><circle cx="0" cy="14" r="2" fill="#f2c14e"/>
 </g></g>
-<line x1="835" y1="128" x2="835" y2="144" stroke="${t.passou}" stroke-opacity=".6" stroke-width="1.5"/>
-<rect x="774" y="144" width="122" height="116" rx="10" fill="${t.passou}" fill-opacity=".14" class="aura"/>
 ${racks}
-<g class="mono">
-  <rect x="762" y="106" width="134" height="22" rx="11" fill="#0b1020" fill-opacity=".85" stroke="${t.passou}" stroke-opacity=".7"/>
-  <circle cx="776" cy="117" r="3.5" fill="#3ddc97"/><circle cx="776" cy="117" r="3.5" fill="#3ddc97" class="vivo"/>
-  <text x="786" y="121" font-size="11" font-weight="700" fill="#e6edf3">servidores</text>
-  <text x="888" y="121" text-anchor="end" font-size="10" fill="#3ddc97">on-line</text>
-</g>
+<circle cx="806" cy="138" r="3" fill="#3ddc97"/><circle cx="806" cy="138" r="3" fill="#3ddc97" class="vivo"/>
+<text x="814" y="142" class="mono" font-size="11" fill="${t.texto}">servidores</text>
 <g transform="translate(644 244)"><g class="boia-ap">
   <path d="M -9 6 Q 0 14 9 6 L 6 -6 H -6 Z" fill="#e5303f"/><rect x="-6" y="-2" width="12" height="4" fill="#fff"/>
   <path d="M 0 -6 V -22" stroke="#d6daf0" stroke-width="2"/><circle cx="0" cy="-23" r="2.5" fill="#3ddc97"/>
