@@ -34,13 +34,13 @@ public class GuilhermeViana {
   <img src="cartoes/linguagens-claro.svg?v=0749c70e" alt="Linguagens usadas nos meus repositórios, por bytes de código" width="49%">
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=709469ee">
-  <img src="cartoes/numeros-claro.svg?v=1e4a4131" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=63ed595d">
+  <img src="cartoes/numeros-claro.svg?v=9039beee" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/atividade-escuro.svg?v=51b24401">
-  <img src="cartoes/atividade-claro.svg?v=5a9ebf61" alt="Contribuições por semana nos últimos 12 meses" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/atividade-escuro.svg?v=7ddf2c78">
+  <img src="cartoes/atividade-claro.svg?v=e909a94c" alt="Contribuições por semana nos últimos 12 meses" width="100%">
 </picture>
 
 </div>
