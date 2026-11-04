@@ -15,42 +15,42 @@
 <g clip-path="url(#dentro)">
 <circle cx="28" cy="28" r="4" fill="#12a36b"/>
 <text x="40" y="32" class="mono" font-size="13" fill="#1b2333" font-weight="600">linguagens</text>
-<text x="130" y="32" class="mono" font-size="12" fill="#5b6782">6 no total · 300 KB</text>
+<text x="130" y="32" class="mono" font-size="12" fill="#5b6782">6 no total · 299 KB</text>
 <clipPath id="cantos"><rect x="24" y="58" width="392" height="10" rx="5"/></clipPath>
-<g clip-path="url(#cantos)"><g class="cresce"><rect x="24.00" y="58" width="254.30" height="10" fill="#b07219"/><rect x="278.30" y="58" width="93.93" height="10" fill="#f1e05a"/><rect x="372.22" y="58" width="28.03" height="10" fill="#663399"/><rect x="400.26" y="58" width="7.02" height="10" fill="#e34c26"/><rect x="407.27" y="58" width="5.83" height="10" fill="#89e051"/><rect x="413.11" y="58" width="2.89" height="10" fill="#5B2063"/></g></g>
+<g clip-path="url(#cantos)"><g class="cresce"><rect x="24.00" y="58" width="255.36" height="10" fill="#b07219"/><rect x="279.36" y="58" width="94.32" height="10" fill="#f1e05a"/><rect x="373.68" y="58" width="26.51" height="10" fill="#663399"/><rect x="400.19" y="58" width="7.05" height="10" fill="#e34c26"/><rect x="407.24" y="58" width="5.86" height="10" fill="#89e051"/><rect x="413.09" y="58" width="2.91" height="10" fill="#5B2063"/></g></g>
 <g class="surge" style="animation-delay:0.30s">
   <circle cx="30" cy="96" r="5" fill="#b07219"/>
   <text x="44" y="100" class="sans" font-size="13" fill="#1b2333">Java</text>
   <rect x="170" y="91" width="150" height="6" rx="3" fill="#eef1f7"/>
-  <rect x="170" y="91" width="97.31" height="6" rx="3" fill="#b07219" class="cresce" style="animation-delay:0.30s"/>
-  <text x="372" y="100" text-anchor="end" class="mono" font-size="12" fill="#1b2333">64,9%</text>
+  <rect x="170" y="91" width="97.72" height="6" rx="3" fill="#b07219" class="cresce" style="animation-delay:0.30s"/>
+  <text x="372" y="100" text-anchor="end" class="mono" font-size="12" fill="#1b2333">65,1%</text>
   <text x="416" y="100" text-anchor="end" class="mono" font-size="11" fill="#5b6782">195 KB</text>
 </g><g class="surge" style="animation-delay:0.42s">
   <circle cx="30" cy="124" r="5" fill="#f1e05a"/>
   <text x="44" y="128" class="sans" font-size="13" fill="#1b2333">JavaScript</text>
   <rect x="170" y="119" width="150" height="6" rx="3" fill="#eef1f7"/>
-  <rect x="170" y="119" width="35.94" height="6" rx="3" fill="#f1e05a" class="cresce" style="animation-delay:0.42s"/>
-  <text x="372" y="128" text-anchor="end" class="mono" font-size="12" fill="#1b2333">24,0%</text>
+  <rect x="170" y="119" width="36.09" height="6" rx="3" fill="#f1e05a" class="cresce" style="animation-delay:0.42s"/>
+  <text x="372" y="128" text-anchor="end" class="mono" font-size="12" fill="#1b2333">24,1%</text>
   <text x="416" y="128" text-anchor="end" class="mono" font-size="11" fill="#5b6782">72 KB</text>
 </g><g class="surge" style="animation-delay:0.54s">
   <circle cx="30" cy="152" r="5" fill="#663399"/>
   <text x="44" y="156" class="sans" font-size="13" fill="#1b2333">CSS</text>
   <rect x="170" y="147" width="150" height="6" rx="3" fill="#eef1f7"/>
-  <rect x="170" y="147" width="10.73" height="6" rx="3" fill="#663399" class="cresce" style="animation-delay:0.54s"/>
-  <text x="372" y="156" text-anchor="end" class="mono" font-size="12" fill="#1b2333">7,2%</text>
-  <text x="416" y="156" text-anchor="end" class="mono" font-size="11" fill="#5b6782">21 KB</text>
+  <rect x="170" y="147" width="10.14" height="6" rx="3" fill="#663399" class="cresce" style="animation-delay:0.54s"/>
+  <text x="372" y="156" text-anchor="end" class="mono" font-size="12" fill="#1b2333">6,8%</text>
+  <text x="416" y="156" text-anchor="end" class="mono" font-size="11" fill="#5b6782">20 KB</text>
 </g><g class="surge" style="animation-delay:0.66s">
   <circle cx="30" cy="180" r="5" fill="#e34c26"/>
   <text x="44" y="184" class="sans" font-size="13" fill="#1b2333">HTML</text>
   <rect x="170" y="175" width="150" height="6" rx="3" fill="#eef1f7"/>
-  <rect x="170" y="175" width="2.69" height="6" rx="3" fill="#e34c26" class="cresce" style="animation-delay:0.66s"/>
+  <rect x="170" y="175" width="2.70" height="6" rx="3" fill="#e34c26" class="cresce" style="animation-delay:0.66s"/>
   <text x="372" y="184" text-anchor="end" class="mono" font-size="12" fill="#1b2333">1,8%</text>
   <text x="416" y="184" text-anchor="end" class="mono" font-size="11" fill="#5b6782">5 KB</text>
 </g><g class="surge" style="animation-delay:0.78s">
   <circle cx="30" cy="208" r="5" fill="#89e051"/>
   <text x="44" y="212" class="sans" font-size="13" fill="#1b2333">Shell</text>
   <rect x="170" y="203" width="150" height="6" rx="3" fill="#eef1f7"/>
-  <rect x="170" y="203" width="2.23" height="6" rx="3" fill="#89e051" class="cresce" style="animation-delay:0.78s"/>
+  <rect x="170" y="203" width="2.24" height="6" rx="3" fill="#89e051" class="cresce" style="animation-delay:0.78s"/>
   <text x="372" y="212" text-anchor="end" class="mono" font-size="12" fill="#1b2333">1,5%</text>
   <text x="416" y="212" text-anchor="end" class="mono" font-size="11" fill="#5b6782">4 KB</text>
 </g><g class="surge" style="animation-delay:0.90s">
