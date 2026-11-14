@@ -34,8 +34,8 @@ public class GuilhermeViana {
   <img src="cartoes/linguagens-claro.svg?v=d2d94584" alt="Linguagens usadas nos meus repositórios, por bytes de código" width="49%">
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=0ca98f8c">
-  <img src="cartoes/numeros-claro.svg?v=b5b66232" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="cartoes/numeros-escuro.svg?v=26204a7e">
+  <img src="cartoes/numeros-claro.svg?v=1757926d" alt="Números do perfil: repositórios, contribuições, commits, pull requests e sequências" width="49%">
 </picture>
 
 <picture>
